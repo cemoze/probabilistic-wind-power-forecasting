@@ -1,6 +1,6 @@
 ---
 title: "Probabilistic Wind Power Forecasting with R"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -22,6 +22,9 @@ Here, I will be showing how to create a probabilistic wind power generation fore
 Here we generate a hourly wind power generation forecasts with 50 different ensembles for a wind power plant with 100 MWs of installed power and 40% capacity factor for a 1 week. After generating the synthetic data, a histogram is built with base R.
 
 ```{r}
+#Let's avoid using scientific notation
+options(scipen = 999)
+
 # Create a sample power forecast data with 50 ensembles for weekly total power generation of a wind power plant with 100 MWs of installed power and 40% capacity factor 
 power = data.frame(power = rnorm(50,mean = 7*24*100*0.4, sd = 1000))
 hist(power$power, breaks=12, main = "Histogram for Synthetic Wind Power Generation Forecast Ensembles",col="royalblue")  
@@ -63,6 +66,7 @@ library(ggplot2)
     geom_density() +
     theme_bw() +
     labs(x = "Power", y = "Density", title = "Density Plot"))
+  
 
 # Take the data of the plot.
 p = ggplot_build(m)
