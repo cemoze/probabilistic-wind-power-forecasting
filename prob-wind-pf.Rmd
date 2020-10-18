@@ -1,6 +1,8 @@
 ---
 title: "Probabilistic Wind Power Forecasting with R"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -54,7 +56,7 @@ rm(filled, a)
 
 ```
 
-While the algorithm behind the density function disperses the mass of the empirical distribution function over a regular grid of at least 512 points and then uses the fast Fourier transform to convolve this approximation with a discretized version of the kernel and then uses linear approximation to evaluate the density at the specified points. Here, I would like to focus on dispersing the mass of the edf over a regular grid of at least 512 term. As it is shown, the R codes above show 512 regular spans and for loops proof it since the first for loop extracts the difference of the x axis  created by density function, second one shows the difference between them is less than or equal to 0.000001. The all(a) function returns TRUE, therefore we are sure that the distances between x axis values are identical and x axis has regular grid spacing.
+While the algorithm behind the density function disperses the mass of the empirical distribution function over a regular grid of at least 512 points and then uses the fast Fourier transform to convolve this approximation with a discretized version of the kernel and then uses linear approximation to evaluate the density at the specified points. Here, I would like to focus on dispersing the mass of the edf over a regular grid of at least 512 term. As it is shown, the R codes above show 512 regular spans and for loops prove it since the first for loop extracts the difference of the x axis  created by density function, second one shows the difference between them is less than or equal to 0.000001. The all(a) function returns TRUE, therefore we are sure that the distances between x axis values are identical and x axis has regular grid spacing.
 
 Now let us have a look to create a density plot with ggplot since we want to have better graphics.
 
@@ -89,14 +91,14 @@ lines(dens$x, dens$y,col="#000050",lwd =2 )
 It has been showed that two different functions generates same densities. Now, probability density functions should be generated. Here we can proceed with the outputs of the density() function because this output fulfills the specification of PDF which is area under the PDF should be equal to 1.
 
 ```{r}
-# Is the area under the curve is equal to 1?
+# Is the total area under the curve is equal to 1?
 sum(dens$y)*diff(dens$x[1:2])
 
 ```
 
 It's very close to 1, hence; outputs of the density(function) can be used as PDF outputs. Since, all the width of the bin of the x axis are identical, theoretical cumulative distribution function (CDF) can also be calculated as cumulative sums of the the mean of each densities in total density.
 
-Note: PDF is the derivative of CDF!
+Note: PDF is the derivative of CDF, so; the area under the PDF curve should be calculated. A better approach is introduced instead of adding all calculated area together.
 
 ```{r}
 # Extract the data from the output of the ggplot_build()
