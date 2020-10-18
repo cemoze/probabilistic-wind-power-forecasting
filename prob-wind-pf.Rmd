@@ -9,11 +9,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## What is Ensemble Forecast?
+## What is an Ensemble Forecast?
 
 Numerical weather prediction (NWP) models create deterministic forecasts based on the meteorological observations collected from all around the earth. This observations are also called initial and boundary conditions for the NWP models. Besides, the atmosphere is a chaotic system and there is a high dependency and sensitivity to the initial and boundary conditions. However; it should also be emphasized that the precision of the observation data collected around the earth is unfortunately low; hence, the errors for these observations can be quite high. Therefore; most of the NWP models create various forecasts for the same focused area and time by just slightly changing the observations all around the earth! As a result of that, 50 different model results which are called ensembles from the same NWP models can be obtained for a specific location and time.
 
-## Probabilistic instead of Deterministic Forecasting
+## Probabilistic Forecasting over Deterministic
 
 All NWP models also have operational forecasts and most of the websites and meteorological organisations are using these forecasts instead of using ensembles together. Since, these deterministic forecasts can be quite wrong and it can lead to irreversible damages for some sectors such as energy, the probabilities should also have to be given!
 
