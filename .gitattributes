@@ -1,3 +1,2 @@
-*.js linguist-language=R
-*.Rmd linguist-detectable=true
 *.R linguist-detectable=true
+*.html linguist-detectable=false
